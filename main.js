@@ -19,37 +19,21 @@ import {
 
 navFunc;
 //add slider images function
-let images = [
-  "f1.png",
-  "f2.png",
-  "f3.png",
-  "f4.png",
-  "f5.png",
-  "f6.png",
-  "f1.png",
-  "f2.png",
-  "f3.png",
-  "f4.png",
-  "f5.png",
-  "f6.png",
-  "f1.png",
-  "f2.png",
-  "f3.png",
-  "f4.png",
-  "f5.png",
-  "f6.png",
-];
 function addItems() {
-  feContent.innerHTML = images
-    .map((image) => {
-      return `<div class="fe-box">
-                <img src="img/features/${image}" alt="">
+  feContent.innerHTML = products
+    .map((product) => {
+      return `<div class="fe-box" data-id=${product.id}>
+                <img src="img/products/${product.img}" alt="" onclick="window.location.href = 'product.html'">
                 <h6>free shipping</h6>
             </div>`;
     })
     .join("");
+  let offersPro = feContent.querySelectorAll(".fe-box img");
+  console.log(offersPro);
+  imageLink(offersPro);
 }
 addItems();
+
 function moveBoxes() {
   btnLeft.addEventListener("click", (e) => {
     feContent.scrollLeft += feContentWidth / 2;
@@ -66,8 +50,6 @@ addProducts(proContainer, products);
 //add products
 
 let newArrivalCont = document.querySelector("#product2 .pro-container");
-// addProducts(newArrivalCont, products);
-
 function addSection2() {
   newArrivalCont.innerHTML = products
     .map((product) => {
@@ -98,29 +80,6 @@ function addSection2() {
   clickBtn(addProdBtn);
 }
 addSection2();
-
-// add slider
-// function addSlider() {
-//   let sliderContainer = [
-//     ...document.querySelectorAll(".lg-container .carousel-inner"),
-//   ];
-//   sliderContainer.forEach(
-//     (container) =>
-//       (container.innerHTML = products
-//         .map((product) => {
-//           return `<div class="carousel-item">
-//                   <img src='img/products/${product.img}' class="d-block w-100" alt="image">
-//                   <div class="carousel-caption d-none d-md-block">
-//                     <h5>Third slide label</h5>
-//                     <p>Some representative placeholder content for the third slide.</p>
-//                   </div>
-//                 </div>`;
-//         })
-//         .join(""))
-//   );
-// }
-// addSlider();
-
 openFilter();
 addFilter();
 // load more function from module

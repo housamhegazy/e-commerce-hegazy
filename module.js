@@ -57,12 +57,10 @@ function clickBtn(btns) {
 // function to send singleProduct image link to local storage
 function imageLink(images) {
   images.forEach((img) => {
-    // console.log(img.parentElement.dataset.id);
     img.addEventListener("click", (e) => {
       let search = products.find(
         (product) => product.id == e.target.parentElement.dataset.id
       );
-      console.log(search);
       localStorage.setItem("imgObj", JSON.stringify(search));
     });
   });
