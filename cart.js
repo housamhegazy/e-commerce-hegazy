@@ -1,6 +1,7 @@
 //import functions from module file
-import { updateBasket, navFunc } from "./module.js";
-
+import {loader, updateBasket, navFunc } from "./module.js";
+//loader function
+loader();
 let cartContainer = document.querySelector("section .cartTable tbody");
 // check if there is products in local storage
 let items = JSON.parse(localStorage.getItem("basket")) || [];

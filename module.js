@@ -1,3 +1,15 @@
+// start loader
+function loader(){
+  document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+      document.querySelector("body").style.visibility = "hidden";
+      document.querySelector(".loader-container").style.visibility = "visible";
+    } else {
+      document.querySelector(".loader-container").style.display = "none";
+      document.querySelector("body").style.visibility = "visible";
+    }
+  };
+}
 //open nav function
 let toggleBtn = document.querySelector("#header .toggle");
 let nav = document.querySelector("#navbar");
@@ -247,6 +259,7 @@ function sortProducts() {
 }
 
 export {
+  loader,
   basket,
   imageLink,
   clickBtn,

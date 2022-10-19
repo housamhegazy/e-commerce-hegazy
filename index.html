@@ -14,7 +14,10 @@
     <title>hegazy-shopping</title>
   </head>
   <body>
-    <section id="header"><a class="logo" href="index.html">Hegazy Store</a>
+    <div class="loader-container">
+      <div class="center" id="loader"></div>
+    </div>
+    <section id="header"><a class="logo" href="index.html">Hegazy <span>Store</span></a>
       <div class="navContainer">
         <ul id="navbar">
           <li><a class="active" href="index.html">Home</a></li>
@@ -29,17 +32,18 @@
     <section id="hero">
       <h4>trade on offer</h4>
       <h2>super value deals</h2>
-      <h1>on all products</h1>
+      <h1>on all products </h1>
       <p>save more with coupons &amp; up to 70% off</p><a href="#product1">shop now</a>
     </section>
     <section class="features" id="features">
-      <div class="btn left"> <i class="fa-solid fa-chevron-left"> </i></div>
-      <div class="btn right"><i class="fa-solid fa-chevron-right"></i></div>
-      <div class="fe-content"></div>
+      <div class="slide-container"> <i class="fa-solid fa-circle-chevron-left"></i>
+        <section class="container" id="slider"></section><i class="fa-solid fa-circle-chevron-right"></i>
+      </div>
     </section>
     <section class="section-p1" id="filter">
       <div class="filter-icon">
-        filter products<i class="fa-solid fa-filter"></i></div>
+        <button class="btn btn-primary">filter products <i class="fa-solid fa-filter px-1"></i></button>
+      </div>
       <div class="filter-container">
         <div class="by-name">
           <p>filter by brand name</p>
@@ -362,7 +366,7 @@
       </form>
     </section>
     <footer class="section-p1">
-      <div class="col"><a class="logo" href="index.html">Hegazy</a>
+      <div class="col"><a class="logo" href="index.html">Hegazy<span>Store</span></a>
         <div class="contact">
           <h3>contact</h3>
           <ul class="list">

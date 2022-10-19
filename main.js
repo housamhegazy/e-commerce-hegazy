@@ -1,11 +1,9 @@
-// =========
-let btnLeft = document.querySelector("#features .btn.left");
-let btnRight = document.querySelector("#features .btn.right");
-let feContent = document.querySelector("#features .fe-content");
-let feContentWidth = feContent.getBoundingClientRect().width;
-
+let sliderContainer = document.querySelector(
+  "#features .slide-container .container"
+);
 //import functions from module file
 import {
+  loader,
   imageLink,
   clickBtn,
   activeNav,
@@ -16,33 +14,65 @@ import {
   addFilter,
   sortProducts,
 } from "./module.js";
-
+// add loader function
+loader();
 navFunc;
-//add slider images function
+
+// first add products to slider
 function addItems() {
-  feContent.innerHTML = products
+  sliderContainer.innerHTML = products
     .map((product) => {
-      return `<div class="fe-box" data-id=${product.id}>
-                <img src="img/products/${product.img}" alt="" onclick="window.location.href = 'product.html'">
-                <h6>free shipping</h6>
+      return `<div class="thumbnail" data-id=${product.id}>
+                <img class='img-fluid' src="img/products/${product.img}" alt="" onclick =" window.location='product.html'">
+                <div class="product details">
+                  <h2>free shipping</h2>
+                </div>
+                 
             </div>`;
     })
     .join("");
-  let offersPro = feContent.querySelectorAll(".fe-box img");
-  console.log(offersPro);
+  let offersPro = sliderContainer.querySelectorAll(".thumbnail img");
+  //add slider images function
   imageLink(offersPro);
 }
 addItems();
+// start slider
+let thumbnail = document.getElementsByClassName("thumbnail");
+let slider = document.getElementById("slider");
+let buttonLeft = document.querySelector(".fa-circle-chevron-left");
+let buttonRight = document.querySelector(".fa-circle-chevron-right");
 
-function moveBoxes() {
-  btnLeft.addEventListener("click", (e) => {
-    feContent.scrollLeft += feContentWidth / 2;
+buttonLeft.addEventListener("click", () => {
+  slider.scrollLeft -= 125;
+});
+buttonRight.addEventListener("click", () => {
+  slider.scrollLeft += 125;
+});
+
+let maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+//autoplay slider
+function autoplay() {
+  if (slider.scrollLeft > maxScrollLeft - 1) {
+    slider.scrollLeft -= maxScrollLeft;
+  } else {
+    slider.scrollLeft += 1;
+  }
+}
+//set interval
+let play = setInterval(autoplay, 50);
+
+//pause autoplay with hover
+
+for (let i = 0; i < thumbnail.length; i++) {
+  thumbnail[i].addEventListener("mouseover", () => {
+    clearInterval(play);
   });
-  btnRight.addEventListener("click", (e) => {
-    feContent.scrollLeft -= feContentWidth / 2;
+  thumbnail[i].addEventListener("mouseout", () => {
+    return (play = setInterval(autoplay, 50));
   });
 }
-moveBoxes();
+// end slider
+
 /* featured products  */
 let proContainer = document.querySelector("#product1 .pro-container");
 addProducts(proContainer, products);

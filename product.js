@@ -1,4 +1,5 @@
 import {
+  loader,
   updateBasket,
   basket,
   activeNav,
@@ -6,7 +7,8 @@ import {
   navFunc,
   loadMoreProduct,
 } from "./module.js";
-
+//loader function
+loader();
 let proContainer = document.querySelector("#product1 .pro-container");
 
 //set main image from local storage

@@ -1,5 +1,6 @@
 let proContainer = document.querySelector("#product1 .pro-container");
 import {
+  loader,
   addProducts,
   navFunc,
   loadMoreProduct,
@@ -7,6 +8,7 @@ import {
   addFilter,
   sortProducts,
 } from "./module.js";
+loader();
 addProducts(proContainer, products);
 loadMoreProduct();
 openFilter();
